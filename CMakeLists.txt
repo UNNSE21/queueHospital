@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 project ("queueHospital")
 
 # Добавьте источник в исполняемый файл этого проекта.
-add_executable (queueHospitalServer "queueHospitalServer.cpp" "queueHospitalServer.h")
+add_executable (queueHospitalServer "queueHospitalServer.cpp" "queueHospitalServer.h" queue.h)
 add_executable (queueHospitalClient "queueHospitalClient.cpp" "queueHospitalClient.h")
 
 
