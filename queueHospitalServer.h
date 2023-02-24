@@ -3,6 +3,5 @@
 
 #pragma once
 
-#include <iostream>
-#include <plibsys.h>
+#include "common.h"
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.

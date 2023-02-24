@@ -1,4 +1,3 @@
 #pragma once
 
-#include <iostream>
-#include <plibsys.h>
+#include "common.h"
