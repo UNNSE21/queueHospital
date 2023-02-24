@@ -2,7 +2,6 @@
 //
 
 #include "queueHospitalServer.h"
-#include <plibsys.h>
 
 int main()
 {
