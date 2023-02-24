@@ -1,7 +1,10 @@
 #include "queueHospitalClient.h"
+#include <plibsys.h>
 
 int main()
 {
-	std::cout << "Hospital Client" << std::endl;
+	p_libsys_init();
+    // TODO: Your code here
+    p_libsys_shutdown();
 	return 0;
 }
