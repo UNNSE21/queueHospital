@@ -4,4 +4,6 @@
 #pragma once
 
 #include "common.h"
+#include "PatientRepository.h"
+
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.

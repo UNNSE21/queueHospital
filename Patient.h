@@ -10,7 +10,7 @@ using namespace std;
 
 class Patient {
 public:
-    enum State {
+    enum class State : uint16_t {
         UNDEFINED = 0,
         PATIENT_NORMAL,
         PATIENT_WARNING,

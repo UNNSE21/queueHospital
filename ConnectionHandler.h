@@ -10,7 +10,7 @@ class ConnectionHandler {
 public:
     virtual int handleConnection() = 0;
     explicit ConnectionHandler(PSocket *socket) : _socket(socket) {}
-private:
+protected:
     PSocket *_socket;
 };
 

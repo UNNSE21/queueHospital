@@ -8,13 +8,10 @@
 #include "common.h"
 #include "PatientRepository.h"
 
-class ServerConnectionHandler : ConnectionHandler {
+class ServerConnectionHandler : public ConnectionHandler {
 public:
     int handleConnection() override;
-private:
-    PatientRepository * repo;
-public:
-    ServerConnectionHandler(PSocket *socket, PatientRepository *repo) : ConnectionHandler(socket), repo(repo) {}
+    explicit ServerConnectionHandler(PSocket *socket) : ConnectionHandler(socket) {}
 
 };
 

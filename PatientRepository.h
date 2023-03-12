@@ -15,6 +15,9 @@ private:
 public:
     std::optional<Patient> getPatient() noexcept;
     bool addPatient(Patient patient);
+    static PatientRepository *getSharedObject();
+private:
+    PatientRepository();
 };
 
 

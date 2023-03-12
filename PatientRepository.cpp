@@ -18,3 +18,12 @@ bool PatientRepository::addPatient(Patient patient) {
     _patients.Push(patient);
     return true;
 }
+
+PatientRepository::PatientRepository() {
+    _patients = queue<Patient>();
+}
+
+PatientRepository *PatientRepository::getSharedObject() {
+    static PatientRepository repo;
+    return &repo;
+}

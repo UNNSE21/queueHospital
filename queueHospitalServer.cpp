@@ -2,18 +2,17 @@
 //
 
 #include "queueHospitalServer.h"
+#include "ServerConnectionManager.h"
 
 pchar buffer[MESSAGE_MAX_SIZE];
 
 int main()
 {
-
+    p_libsys_init();
     // При любом выводе в поток делать на конце std::endl. Либо использовать std::cout.flush() чтобы обновить консоль.
     // Иначе она может фризить и по факту выведенное сообщение не появится на экране. Видимо побочный эффект работы
     // с сокетами
-
-    pssize readSize;
-    PSocketAddress *addr;
+    /*PSocketAddress *addr;
     PSocket   *sock;
     p_libsys_init();
 
@@ -36,9 +35,9 @@ int main()
         p_socket_free(sock);
         p_libsys_shutdown();
         return 3;
-    }
-    std::cout << "bound address\n";
-    if(p_socket_listen(sock, nullptr) == FALSE)
+    }*/
+    //std::cout << "bound address\n";
+    /*if(p_socket_listen(sock, nullptr) == FALSE)
     {
         std::cerr << "Could not start listening on socket...\n";
         p_socket_address_free(addr);
@@ -50,11 +49,10 @@ int main()
     auto nSock = p_socket_accept(sock, nullptr);
     std::cout << "accepted connection" << std::endl;
 
-
-
-    // Free all resources
-    p_socket_free(sock); // socket is closed automatically
-    p_socket_address_free(addr);
+*/
+    auto server = ServerConnectionManager();
+    server.Listen();
+    
     p_libsys_shutdown();
 	return 0;
 }
