@@ -42,7 +42,7 @@ template<class T>
 void queue<T>::Push(const T &item) {
     if(isFull())
         throw std::out_of_range("Queue is full");
-    tail->next = new node(item, nullptr);
+    tail->next =  new node {item, nullptr};
     tail = tail->next;
     queueSize++;
 }

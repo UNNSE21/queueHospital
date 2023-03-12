@@ -6,9 +6,15 @@
 #define QUEUEHOSPITAL_PATIENTREPOSITORY_H
 
 
+#include <optional>
+#include "Patient.h"
+#include "queue.h"
 class PatientRepository {
 private:
     queue<Patient> _patients;
+public:
+    std::optional<Patient> getPatient() noexcept;
+    bool addPatient(Patient patient);
 };
 
 

@@ -8,5 +8,8 @@
 #include <plibsys.h>
 #include <iostream>
 #define MESSAGE_MAX_SIZE 1024
+#include "Patient.h"
+#include "VipPatient.h"
+#include "RegularPatient.h"
 
 #endif //QUEUEHOSPITAL_COMMON_H

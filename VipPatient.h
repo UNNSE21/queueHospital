@@ -11,6 +11,7 @@ private:
     uint32_t money;
 public:
     VipPatient() = default;
+    VipPatient(const string &fullName, const State &state, uint32_t money);
 };
 
 

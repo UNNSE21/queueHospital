@@ -16,13 +16,13 @@ public:
         PATIENT_WARNING,
         PATIENT_CRITICAL,
     };
-private:
+protected:
     string _fullName;
     State _state;
 public:
     Patient() = default;
-    Patient(const string& _fullName, const State& _state);
-    virtual ~Patient() = 0;
+    Patient(string  fullName, const State& state);
+    virtual ~Patient() = default;
 };
 
 

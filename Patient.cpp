@@ -3,3 +3,7 @@
 //
 
 #include "Patient.h"
+
+#include <utility>
+
+Patient::Patient(string fullName, const Patient::State &state) : _fullName(std::move(fullName)), _state(state) {}

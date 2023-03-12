@@ -1,0 +1,13 @@
+//
+// Created by k17 on 25.02.2023.
+//
+
+#ifndef QUEUEHOSPITAL_SERVERCONNECTIONMANAGER_H
+#define QUEUEHOSPITAL_SERVERCONNECTIONMANAGER_H
+#include <plibsys.h>
+
+class ServerConnectionManager {
+};
+
+
+#endif //QUEUEHOSPITAL_SERVERCONNECTIONMANAGER_H
