@@ -7,7 +7,7 @@ project ("queueHospital")
 
 add_subdirectory(modules/plibsys plibsys)
 
-add_library(queueAppCommonLib common.h Patient.cpp Patient.h VipPatient.cpp VipPatient.h ConnectionHandler.h DataConverter.cpp DataConverter.h)
+add_library(queueAppCommonLib common.h Patient.cpp Patient.h VipPatient.cpp VipPatient.h ConnectionHandler.h DataConverter.cpp DataConverter.h PatientDataConverter.cpp PatientDataConverter.h)
 
 # Добавьте источник в исполняемый файл этого проекта.
 add_executable (queueHospitalServer
@@ -16,10 +16,12 @@ add_executable (queueHospitalServer
         "queue.h"
         ServerConnectionManager.cpp ServerConnectionManager.h
         PatientRepository.cpp PatientRepository.h
+        ServerConnectionHandler.cpp ServerConnectionHandler.h
         )
 add_executable (queueHospitalClient
         "common.h"
         "queueHospitalClient.cpp" "queueHospitalClient.h"
+        ClientConnectionHandler.cpp ClientConnectionHandler.h
         )
 
 target_link_libraries(queueHospitalServer plibsys)

@@ -11,5 +11,8 @@
 #include "Patient.h"
 #include "VipPatient.h"
 #include "RegularPatient.h"
-
+#include "ConnectionHandler.h"
+#include "DataConverter.h"
+#include "PatientDataConverter.h"
+#include <thread>
 #endif //QUEUEHOSPITAL_COMMON_H

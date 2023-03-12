@@ -1,4 +1,5 @@
 #include "queueHospitalClient.h"
+#include "ClientConnectionHandler.h"
 
 pchar buffer[MESSAGE_MAX_SIZE];
 int main()
@@ -27,13 +28,10 @@ int main()
     }
 
     // Trying to connect until succeed
-    while(p_socket_connect(sock, addr, nullptr) == FALSE);
+    while(std::this_thread::sleep_for(500ms),p_socket_connect(sock, addr, nullptr) == FALSE);
     std::cout << "connected" << std::endl;
-    p_socket_send(sock, "Hello, server!", 15, nullptr);
-    std::cout << "Sent message to server" << std::endl;
-    p_socket_receive(sock, buffer, MESSAGE_MAX_SIZE, nullptr);
-    std::cout << buffer << std::endl;
-
+    ClientConnectionHandler handler(sock);
+    handler.handleConnection();
     // Free all resources
     p_socket_free(sock);
     p_socket_address_free(addr); // socket is closed automatically

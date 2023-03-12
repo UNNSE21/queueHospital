@@ -8,7 +8,7 @@
 
 class ConnectionHandler {
 public:
-    virtual int handle() = 0;
+    virtual int handleConnection() = 0;
     explicit ConnectionHandler(PSocket *socket) : _socket(socket) {}
 private:
     PSocket *_socket;

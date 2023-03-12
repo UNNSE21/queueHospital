@@ -7,7 +7,7 @@
 
 
 #include <optional>
-#include "Patient.h"
+#include "common.h"
 #include "queue.h"
 class PatientRepository {
 private:

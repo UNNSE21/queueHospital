@@ -51,11 +51,6 @@ int main()
     std::cout << "accepted connection" << std::endl;
 
 
-    if((readSize = p_socket_receive(nSock, buffer, MESSAGE_MAX_SIZE, nullptr)) == -1){
-        std::cout << "could not receive a message" << std::endl;
-    }
-    std::cout << buffer << std::endl;
-    p_socket_send(nSock, "Hello, client!", 15, nullptr);
 
     // Free all resources
     p_socket_free(sock); // socket is closed automatically

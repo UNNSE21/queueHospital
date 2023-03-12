@@ -18,6 +18,12 @@ public:
     };
 protected:
     string _fullName;
+public:
+    const string &getFullName() const;
+
+    State getState() const;
+
+protected:
     State _state;
 public:
     Patient() = default;
