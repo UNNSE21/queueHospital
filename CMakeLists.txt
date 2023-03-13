@@ -17,7 +17,7 @@ add_executable (queueHospitalServer
         source/server/ServerConnectionManager.cpp include/server/ServerConnectionManager.h
         source/server/PatientRepository.cpp include/server/PatientRepository.h
         source/server/ServerConnectionHandler.cpp include/server/ServerConnectionHandler.h
-        )
+        source/server/PatientAuthorization.cpp include/server/PatientAuthorization.h source/server/DoctorAuthorization.cpp include/server/DoctorAuthorization.h source/server/Authorization.cpp include/server/Authorization.h)
 add_executable (queueHospitalClient
         "include/common/common.h"
         "source/client/queueHospitalClient.cpp" "include/client/queueHospitalClient.h"
