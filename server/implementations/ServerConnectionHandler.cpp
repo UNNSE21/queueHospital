@@ -3,7 +3,7 @@
 //
 
 #include <cstring>
-#include "ServerConnectionHandler.h"
+#include "../ServerConnectionHandler.h"
 
 int ServerConnectionHandler::handleConnection() {
     int authDigit = 0;

@@ -5,7 +5,7 @@
 #ifndef QUEUEHOSPITAL_CLIENTCONNECTIONHANDLER_H
 #define QUEUEHOSPITAL_CLIENTCONNECTIONHANDLER_H
 
-#include "common.h"
+#include "../common/common.h"
 
 class ClientConnectionHandler : public ConnectionHandler {
 public:

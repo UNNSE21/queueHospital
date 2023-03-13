@@ -2,7 +2,7 @@
 // Created by k17 on 12.03.2023.
 //
 
-#include "PatientDataConverter.h"
+#include "../PatientDataConverter.h"
 
 std::pair<char *, uint32_t> PatientDataConverter::Encode(const Patient &object) {
     size_t nameSize = object.getFullName().size();

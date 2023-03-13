@@ -3,6 +3,6 @@
 
 #pragma once
 
-#include "common.h"
+#include "../common/common.h"
 #include "PatientRepository.h"
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.

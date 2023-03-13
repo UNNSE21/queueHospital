@@ -1,8 +1,8 @@
 ﻿// queueHospital.cpp: определяет точку входа для приложения.
 //
 
-#include "queueHospitalServer.h"
-#include "ServerConnectionManager.h"
+#include "../queueHospitalServer.h"
+#include "../ServerConnectionManager.h"
 
 pchar buffer[MESSAGE_MAX_SIZE];
 
