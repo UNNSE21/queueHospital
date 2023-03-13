@@ -10,7 +10,8 @@
 #include "DataConverter.h"
 
 class PatientDataConverter : public DataConverter<Patient>{
-    char *Encode(const Patient &object) override;
+public:
+    pair<char *, uint32_t> Encode(const Patient &object) override;
     optional<Patient> Decode(const char *obj, size_t size) override;
 };
 

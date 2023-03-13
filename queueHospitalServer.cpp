@@ -50,9 +50,9 @@ int main()
     std::cout << "accepted connection" << std::endl;
 
 */
-    auto server = ServerConnectionManager();
-    server.Listen();
-    
+    auto server = new ServerConnectionManager();
+    server->Listen();
+    delete server;
     p_libsys_shutdown();
 	return 0;
 }

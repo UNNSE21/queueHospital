@@ -19,8 +19,10 @@ public:
     virtual ~ServerConnectionManager();
     void Listen();
     ServerConnectionManager();
+
 private:
     static ppointer ConnectionThread(ppointer arg);
+    static ppointer ListenThread(ppointer arg);
 };
 
 

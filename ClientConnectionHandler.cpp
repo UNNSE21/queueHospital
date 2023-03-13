@@ -24,23 +24,25 @@ int ClientConnectionHandler::handleConnection() {
     {
         std::cout << "auth as doctor successful" << std::endl;
         int x;
-        char buf[50];
+        PatientDataConverter conv;
+        char buf[500];
         std::string strs;
         while(strcmp(buf, "stop") != 0) {
             std::cin >> strs;
-            if(strs == "n"){
-                std::cin >> x;
-                p_uthread_sleep(x);
-                auto a = std::to_string(x);
-                p_socket_send(_socket, a.c_str(), a.length(), nullptr);
-            }
-            else if(strs == "s")
+            if(strs == "get")
             {
-                p_socket_send(_socket, "stop", 5, nullptr);
+                p_socket_send(_socket, "get", 4, nullptr);
+                p_socket_receive(_socket, buf, 500, nullptr);
+                auto patient = conv.Decode(buf, 500);
+                if(patient.has_value())
+                {
+                    std::cout << "Name: " << patient.value().getFullName() << "\nState: " << static_cast <int> (patient.value().getState()) << std::endl;
+                }
+                else {
+                    std::cout << "No patients\n";
+                }
             }
-            else
-                continue;
-            p_socket_receive(_socket, buf, 50, nullptr);
+
         }
         return 0;
     }

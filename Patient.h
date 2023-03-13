@@ -14,7 +14,7 @@ public:
         UNDEFINED = 0,
         PATIENT_NORMAL,
         PATIENT_WARNING,
-        PATIENT_CRITICAL,
+        PATIENT_CRITICAL
     };
 protected:
     string _fullName;

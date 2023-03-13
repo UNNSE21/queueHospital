@@ -6,11 +6,13 @@
 #define QUEUEHOSPITAL_DATACONVERTER_H
 
 #include <optional>
+#include <utility>
+#include <cstdint>
 
 template<class T>
 class DataConverter {
 public:
-    virtual char *Encode (const T& object) = 0;
+    virtual std::pair<char *, uint32_t> Encode (const T& object) = 0;
     virtual std::optional<T> Decode(const char *obj, size_t size) = 0;
 };
 

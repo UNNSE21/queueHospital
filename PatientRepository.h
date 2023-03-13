@@ -11,11 +11,12 @@
 #include "queue.h"
 class PatientRepository {
 private:
-    queue<Patient> _patients;
+    queue<Patient *> _patients;
 public:
     std::optional<Patient> getPatient() noexcept;
-    bool addPatient(Patient patient);
+    bool addPatient(Patient *patient);
     static PatientRepository *getSharedObject();
+    ~PatientRepository();
 private:
     PatientRepository();
 };
