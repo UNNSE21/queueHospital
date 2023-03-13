@@ -2,7 +2,7 @@
 // Created by mikhail on 27.02.2023.
 //
 
-#include "../PatientRepository.h"
+#include "../../include/server/PatientRepository.h"
 
 std::optional<Patient> PatientRepository::getPatient() noexcept {
     if(_patients.isEmpty())

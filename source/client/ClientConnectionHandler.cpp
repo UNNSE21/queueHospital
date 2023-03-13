@@ -4,7 +4,7 @@
 
 #include <cstring>
 #include <stdlib.h>
-#include "../ClientConnectionHandler.h"
+#include "../../include/client/ClientConnectionHandler.h"
 
 int ClientConnectionHandler::handleConnection() {
     if(!p_socket_is_connected(_socket))

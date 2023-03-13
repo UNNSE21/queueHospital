@@ -7,21 +7,21 @@ project ("queueHospital")
 
 add_subdirectory(modules/plibsys plibsys)
 
-add_library(queueAppCommonLib common/common.h common/implementations/Patient.cpp common/Patient.h common/implementations/VipPatient.cpp common/VipPatient.h common/ConnectionHandler.h common/implementations/DataConverter.cpp common/DataConverter.h common/implementations/PatientDataConverter.cpp common/PatientDataConverter.h)
+add_library(queueAppCommonLib include/common/common.h source/common/Patient.cpp include/common/Patient.h source/common/VipPatient.cpp include/common/VipPatient.h include/common/ConnectionHandler.h source/common/DataConverter.cpp include/common/DataConverter.h source/common/PatientDataConverter.cpp include/common/PatientDataConverter.h)
 
 # Добавьте источник в исполняемый файл этого проекта.
 add_executable (queueHospitalServer
-        "common/common.h"
-        "server/implementations/queueHospitalServer.cpp" "server/queueHospitalServer.h"
-        "server/queue.h"
-        server/implementations/ServerConnectionManager.cpp server/ServerConnectionManager.h
-        server/implementations/PatientRepository.cpp server/PatientRepository.h
-        server/implementations/ServerConnectionHandler.cpp server/ServerConnectionHandler.h
+        "include/common/common.h"
+        "source/server/queueHospitalServer.cpp" "include/server/queueHospitalServer.h"
+        "include/server/queue.h"
+        source/server/ServerConnectionManager.cpp include/server/ServerConnectionManager.h
+        source/server/PatientRepository.cpp include/server/PatientRepository.h
+        source/server/ServerConnectionHandler.cpp include/server/ServerConnectionHandler.h
         )
 add_executable (queueHospitalClient
-        "common/common.h"
-        "client/implementations/queueHospitalClient.cpp" "client/queueHospitalClient.h"
-        client/implementations/ClientConnectionHandler.cpp client/ClientConnectionHandler.h
+        "include/common/common.h"
+        "source/client/queueHospitalClient.cpp" "include/client/queueHospitalClient.h"
+        source/client/ClientConnectionHandler.cpp include/client/ClientConnectionHandler.h
         )
 
 target_link_libraries(queueHospitalServer plibsys)

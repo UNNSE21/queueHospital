@@ -2,8 +2,8 @@
 // Created by k17 on 25.02.2023.
 //
 
-#include "../ServerConnectionManager.h"
-#include "../ServerConnectionHandler.h"
+#include "../../include/server/ServerConnectionManager.h"
+#include "../../include/server/ServerConnectionHandler.h"
 
 bool serverStop;
 ServerConnectionManager::ServerConnectionManager() {
