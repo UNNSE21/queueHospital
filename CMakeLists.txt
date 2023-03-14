@@ -22,7 +22,7 @@ add_executable (queueHospitalClient
         "include/common/common.h"
         "source/client/queueHospitalClient.cpp" "include/client/queueHospitalClient.h"
         source/client/ClientConnectionHandler.cpp include/client/ClientConnectionHandler.h
-        )
+        source/client/commands/doctor/ReceivingPatient.cpp include/client/commands/doctor/ReceivingPatient.h source/client/commands/common/Authorization.cpp include/client/commands/common/Authorization.h source/client/commands/doctor/DoctorCommandHandler.cpp include/client/commands/doctor/DoctorCommandHandler.h include/client/commands/common/CommandHandler.h source/client/commands/patient/PatientCommandHandler.cpp include/client/commands/patient/PatientCommandHandler.h)
 
 target_link_libraries(queueHospitalServer plibsys)
 target_link_libraries(queueHospitalServer queueAppCommonLib)
