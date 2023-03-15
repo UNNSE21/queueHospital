@@ -10,7 +10,7 @@
 
 class Authorization {
 public:
-    char* authorize(PSocket *socket, char* authResult );
+    std::string authorize(PSocket *socket);
 };
 
 
