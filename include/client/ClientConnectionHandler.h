@@ -9,7 +9,7 @@
 
 class ClientConnectionHandler : public ConnectionHandler {
 public:
-    ClientConnectionHandler(PSocket *socket);
+    explicit ClientConnectionHandler(PSocket *socket);
 
     int handleConnection() override;
 };

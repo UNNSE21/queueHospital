@@ -1,19 +1,19 @@
 //
-// Created by Андрей Юрин on 14.03.2023.
+// Created by Андрей Юрин on 15.03.2023.
 //
 
 #ifndef QUEUEHOSPITAL_RECEIVINGPATIENT_H
 #define QUEUEHOSPITAL_RECEIVINGPATIENT_H
 
-
 #include <iostream>
-#include <optional>
 #include "plibsys.h"
-#include "../../../common/Patient.h"
+#include "../../../common/PatientDataConverter.h"
+#include "../../PatientRepository.h"
+
 
 class ReceivingPatient {
 public:
-    optional<Patient> get(PSocket *socket);
+    void get(PSocket* socket);
 };
 
 

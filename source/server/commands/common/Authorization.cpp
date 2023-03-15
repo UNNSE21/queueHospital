@@ -2,7 +2,7 @@
 // Created by Андрей Юрин on 13.03.2023.
 //
 
-#include "../../include/server/Authorization.h"
+#include "../../../../include/server/commands/common/Authorization.h"
 
 void Authorization::Authorize(PSocket* socket) {
     std::cout << "Failed auth" << std::endl;

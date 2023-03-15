@@ -1,16 +1,15 @@
 //
-// Created by Андрей Юрин on 14.03.2023.
+// Created by Андрей Юрин on 15.03.2023.
 //
 
 #ifndef QUEUEHOSPITAL_PATIENTCOMMANDHANDLER_H
 #define QUEUEHOSPITAL_PATIENTCOMMANDHANDLER_H
 
-
 #include "../../../common/CommandHandler.h"
 
-class PatientCommandHandler : public CommandHandler{
+class PatientCommandHandler: public CommandHandler {
 public:
-    void ProcessCommands(PSocket* socket) override;
+    void ProcessCommands(PSocket *socket) override;
 };
 
 

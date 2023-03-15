@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "plibsys.h"
-#include "Authorization.h"
+#include "../common/Authorization.h"
 
 class PatientAuthorization : public Authorization{
 public:

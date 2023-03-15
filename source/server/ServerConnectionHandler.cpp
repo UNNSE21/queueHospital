@@ -4,8 +4,8 @@
 
 #include <cstring>
 #include "../../include/server/ServerConnectionHandler.h"
-#include "../../include/server/PatientAuthorization.h"
-#include "../../include/server/DoctorAuthorization.h"
+#include "../../include/server/commands/patient/PatientAuthorization.h"
+#include "../../include/server/commands/doctor/DoctorAuthorization.h"
 
 
 int ServerConnectionHandler::handleConnection() {

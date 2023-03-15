@@ -17,12 +17,12 @@ add_executable (queueHospitalServer
         source/server/ServerConnectionManager.cpp include/server/ServerConnectionManager.h
         source/server/PatientRepository.cpp include/server/PatientRepository.h
         source/server/ServerConnectionHandler.cpp include/server/ServerConnectionHandler.h
-        source/server/PatientAuthorization.cpp include/server/PatientAuthorization.h source/server/DoctorAuthorization.cpp include/server/DoctorAuthorization.h source/server/Authorization.cpp include/server/Authorization.h)
+        source/server/commands/patient/PatientAuthorization.cpp include/server/commands/patient/PatientAuthorization.h source/server/commands/doctor/DoctorAuthorization.cpp include/server/commands/doctor/DoctorAuthorization.h source/server/commands/common/Authorization.cpp include/server/commands/common/Authorization.h source/server/commands/doctor/DoctorCommandHandler.cpp include/server/commands/doctor/DoctorCommandHandler.h source/server/commands/doctor/ReceivingPatient.cpp include/server/commands/doctor/ReceivingPatient.h source/server/commands/patient/PatientCommandHandler.cpp include/server/commands/patient/PatientCommandHandler.h)
 add_executable (queueHospitalClient
         "include/common/common.h"
         "source/client/queueHospitalClient.cpp" "include/client/queueHospitalClient.h"
         source/client/ClientConnectionHandler.cpp include/client/ClientConnectionHandler.h
-        source/client/commands/doctor/ReceivingPatient.cpp include/client/commands/doctor/ReceivingPatient.h source/client/commands/common/Authorization.cpp include/client/commands/common/Authorization.h source/client/commands/doctor/DoctorCommandHandler.cpp include/client/commands/doctor/DoctorCommandHandler.h include/client/commands/common/CommandHandler.h source/client/commands/patient/PatientCommandHandler.cpp include/client/commands/patient/PatientCommandHandler.h)
+        source/client/commands/doctor/ReceivingPatient.cpp include/client/commands/doctor/ReceivingPatient.h source/client/commands/common/Authorization.cpp include/client/commands/common/Authorization.h source/client/commands/doctor/DoctorCommandHandler.cpp include/client/commands/doctor/DoctorCommandHandler.h include/common/CommandHandler.h source/client/commands/patient/PatientCommandHandler.cpp include/client/commands/patient/PatientCommandHandler.h)
 
 target_link_libraries(queueHospitalServer plibsys)
 target_link_libraries(queueHospitalServer queueAppCommonLib)
