@@ -2,6 +2,7 @@
 // Created by Андрей Юрин on 14.03.2023.
 //
 
+#include <cstring>
 #include "../../../../include/client/commands/doctor/DoctorCommandHandler.h"
 #include "../../../../include/client/commands/doctor/ReceivingPatient.h"
 
