@@ -88,7 +88,8 @@ void queue<T>::clear() {
 
 template<class T>
 queue<T>::queue(size_t maxSize) : maxSize(maxSize), queueSize(0) {
-
+    head = nullptr;
+    tail = nullptr;
 }
 
 

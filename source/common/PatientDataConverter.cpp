@@ -3,24 +3,26 @@
 //
 
 #include "../../include/common/PatientDataConverter.h"
-
 std::pair<char *, uint32_t> PatientDataConverter::Encode(const Patient &object) {
-    size_t nameSize = object.getFullName().size();
+    uint32_t nameSize = object.getFullName().size();
     const char *nameData = object.getFullName().data();
-    uint32_t msgSize = nameSize + sizeof(Patient::State);
+    auto stateNum = static_cast<uint16_t>(object.getState());
+    auto stateNumSize = sizeof(uint16_t);
+    uint32_t msgSize = nameSize + stateNumSize;
     char *result = new char[msgSize + sizeof(msgSize)];
     std::copy(nameData, nameData + nameSize, result + sizeof(msgSize));
     *((uint32_t *)result ) = msgSize;
-    *((Patient::State *)result+nameSize) = object.getState();
+    *((uint16_t *)(result + sizeof(msgSize) + nameSize)) = stateNum;
     return {result, msgSize + sizeof(msgSize)};
 }
 
 std::optional<Patient> PatientDataConverter::Decode(const char *obj, size_t size) {
-    size_t enumSize = sizeof(Patient::State);
+    size_t stateNumSize = sizeof(uint16_t);
     uint32_t realSize = *((uint32_t *) obj);
     obj+= sizeof(realSize);
-    if (realSize <= enumSize){
+    if (realSize <= stateNumSize){
         return {};
     }
-    return Patient(std::string(obj, realSize - enumSize), *(Patient::State *)(obj + realSize - enumSize));
+    return Patient(std::string(obj, realSize - stateNumSize),
+                   static_cast<const Patient::State>(*(uint16_t *) (obj + realSize - stateNumSize)));
 }
