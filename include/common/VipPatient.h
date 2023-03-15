@@ -10,6 +10,9 @@ class VipPatient : public Patient {
 private:
     uint32_t money;
 public:
+    uint32_t getMoney() const;
+
+public:
     VipPatient() = default;
     VipPatient(const string &fullName, const State &state, uint32_t money);
 };

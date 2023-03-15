@@ -11,10 +11,11 @@
 
 template<class T>
 class queue {
-private:
+protected:
     struct node {
         T elem;
         node* next;
+        node* prev;
         void clearChild()
         {
             if(next)
@@ -31,8 +32,8 @@ private:
     node* tail;
 public:
     explicit queue(size_t maxSize = 100);
-    void Push(const T& item);
-    T Pop();
+    virtual void Push(const T& item);
+    virtual T Pop();
     [[nodiscard]] bool isEmpty() const;
     [[nodiscard]] bool isFull() const;
     void clear();
@@ -44,11 +45,11 @@ void queue<T>::Push(const T &item) {
         throw std::out_of_range("Queue is full");
     if(tail == nullptr)
     {
-        tail = new node {item, nullptr};
+        tail = new node {item, nullptr, nullptr};
         head = tail;
     }
     else {
-        tail->next =  new node {item, nullptr};
+        tail->next =  new node {item, nullptr, tail};
         tail = tail->next;
     }
     queueSize++;
@@ -83,6 +84,7 @@ void queue<T>::clear() {
     head->clearChild();
     delete head;
     head = nullptr;
+    tail = nullptr;
     queueSize = 0;
 }
 
@@ -92,5 +94,69 @@ queue<T>::queue(size_t maxSize) : maxSize(maxSize), queueSize(0) {
     tail = nullptr;
 }
 
+
+class patientQueue : public queue<Patient *>
+{
+public:
+
+    explicit patientQueue(size_t maxSize) : queue<Patient *>(maxSize) {}
+
+    void Push(Patient *const &item) override {
+        if(isFull())
+        {
+            throw std::out_of_range("Queue is full");
+        }
+        if(item->getState() == Patient::State::PATIENT_CRITICAL)
+        {
+            node * newNode = new node {item, head, nullptr};
+            head->prev = newNode;
+            head = newNode;
+            return;
+        }
+        auto vip = dynamic_cast<VipPatient *> (item);
+        if(vip == nullptr)
+        {
+            auto cur = head;
+            VipPatient *curVip;
+            while(cur != nullptr)
+            {
+                if((curVip = dynamic_cast<VipPatient *>(cur->elem)) == nullptr || curVip->getMoney() < vip->getMoney())
+                {
+                    node *newNode = new node {item, cur, cur->prev};
+                    cur->prev->next = newNode;
+                    cur->prev = newNode;
+                    break;
+                }
+                cur = cur->next;
+            }
+            if(cur == nullptr)
+            {
+                queue::Push(item);
+            }
+        }
+        else
+        {
+            auto cur = head;
+            VipPatient *curVip;
+            while(cur != nullptr)
+            {
+                if(dynamic_cast<VipPatient *>(cur->elem) == nullptr
+                && static_cast<uint16_t>(cur->elem->getState()) < static_cast<uint16_t>(item->getState()))
+                {
+                    node *newNode = new node {item, cur, cur->prev};
+                    cur->prev->next = newNode;
+                    cur->prev = newNode;
+                    break;
+                }
+                cur = cur->next;
+            }
+            if(cur == nullptr)
+            {
+                queue::Push(item);
+            }
+        }
+    }
+
+};
 
 #endif //QUEUEHOSPITAL_QUEUE_H
