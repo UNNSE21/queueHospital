@@ -106,25 +106,34 @@ public:
         {
             throw std::out_of_range("Queue is full");
         }
+        std::cout << item->getFullName() << std::endl;
         if(item->getState() == Patient::State::PATIENT_CRITICAL)
         {
             node * newNode = new node {item, head, nullptr};
-            head->prev = newNode;
+            if (head != nullptr)
+                head->prev = newNode;
             head = newNode;
+            queueSize++;
             return;
         }
         auto vip = dynamic_cast<VipPatient *> (item);
-        if(vip == nullptr)
+        std::cout << vip << std::endl;
+        if(vip != nullptr)
         {
             auto cur = head;
             VipPatient *curVip;
             while(cur != nullptr)
             {
-                if((curVip = dynamic_cast<VipPatient *>(cur->elem)) == nullptr || curVip->getMoney() < vip->getMoney())
+                curVip = dynamic_cast<VipPatient *>(cur->elem);
+                if(cur->elem->getState() != Patient::State::PATIENT_CRITICAL && (curVip  == nullptr || curVip->getMoney() < vip->getMoney()))
                 {
                     node *newNode = new node {item, cur, cur->prev};
-                    cur->prev->next = newNode;
+                    if (cur->prev != nullptr)
+                        cur->prev->next = newNode;
+                    else
+                        head = newNode;
                     cur->prev = newNode;
+                    queueSize++;
                     break;
                 }
                 cur = cur->next;
@@ -144,8 +153,12 @@ public:
                 && static_cast<uint16_t>(cur->elem->getState()) < static_cast<uint16_t>(item->getState()))
                 {
                     node *newNode = new node {item, cur, cur->prev};
-                    cur->prev->next = newNode;
+                    if (cur->prev != nullptr)
+                        cur->prev->next = newNode;
+                    else
+                        head = newNode;
                     cur->prev = newNode;
+                    queueSize++;
                     break;
                 }
                 cur = cur->next;

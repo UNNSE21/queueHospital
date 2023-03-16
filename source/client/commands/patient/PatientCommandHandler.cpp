@@ -17,7 +17,7 @@ void PatientCommandHandler::ProcessCommands(PSocket *socket) {
             std::string fullname;
             std::cin.ignore();
             std::getline(std::cin, fullname);
-            p_socket_send(socket, fullname.c_str(), fullname.length(), nullptr);
+            p_socket_send(socket, fullname.c_str(), fullname.length() + 1, nullptr);
             uint16_t stateNum = 0;
             do {
                 std::cout << "Enter patient state (1 - 3, 3 - Critical): ";
@@ -32,12 +32,13 @@ void PatientCommandHandler::ProcessCommands(PSocket *socket) {
             }
         } else if (strs == "vipreg") {
 
-            p_socket_send(socket, "vipreg", 4, nullptr);
+            p_socket_send(socket, "vipreg", 7, nullptr);
             std::cout << "Enter full name: ";
             std::string fullname;
             std::cin.ignore();
             std::getline(std::cin, fullname);
-            p_socket_send(socket, fullname.c_str(), fullname.length(), nullptr);
+            std::cout << fullname.c_str() << std::endl;
+            p_socket_send(socket, fullname.c_str(), fullname.length() + 1, nullptr);
             uint16_t stateNum = 0;
             do {
                 std::cout << "Enter patient state (1 - 3, 3 - Critical): ";

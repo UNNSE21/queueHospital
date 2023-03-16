@@ -22,8 +22,7 @@ bool PatientRepository::addPatient(Patient *patient) {
     return true;
 }
 
-PatientRepository::PatientRepository() {
-    _patients = queue<Patient *>();
+PatientRepository::PatientRepository(): _patients(10) {
 }
 
 PatientRepository *PatientRepository::getSharedObject() {

@@ -59,6 +59,7 @@ ppointer ServerConnectionManager::ListenThread(ppointer arg) {
             }
         }
     }
+    std::cout << "Listener shut down" << std::endl;
     return nullptr;
 }
 ppointer ServerConnectionManager::ConnectionThread(ppointer arg) {
