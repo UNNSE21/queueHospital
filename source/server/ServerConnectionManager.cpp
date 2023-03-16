@@ -4,8 +4,9 @@
 
 #include "../../include/server/ServerConnectionManager.h"
 #include "../../include/server/ServerConnectionHandler.h"
+std::atomic<bool> ServerConnectionManager::serverStop = false;
 
-bool serverStop;
+
 ServerConnectionManager::ServerConnectionManager() {
     if((address = p_socket_address_new("0.0.0.0", 5552)) == nullptr)
     {
@@ -18,7 +19,7 @@ ServerConnectionManager::ServerConnectionManager() {
         p_socket_address_free(address);
         throw std::runtime_error("Could not create socket...\n");
     }
-    //p_socket_set_blocking(_socket, FALSE);
+    p_socket_set_blocking(_socket, FALSE);
     if (p_socket_bind (_socket, address, FALSE, nullptr) == FALSE) {
         std::cerr << "Could not bind address to socket...\n";
         p_socket_address_free(address);
@@ -40,19 +41,29 @@ void ServerConnectionManager::Listen() {
     char c;
     std::cin >> c;
     serverStop = true;
+    std::cout << "Shutting down" << std::endl;
+    p_uthread_sleep(10000);
 }
 ppointer ServerConnectionManager::ListenThread(ppointer arg) {
+    PUThread *threads[MAX_SERVER_THREAD_COUNT];
+    size_t workingThreads = 0;
     auto ssocket = static_cast<PSocket *> (arg);
     while (!serverStop)
     {
-        //if(socketsCount < MAX_SERVER_THREAD_COUNT) {
         auto conSocket = p_socket_accept(ssocket, nullptr);
-        ServerConnectionManager::ConnectionThread(conSocket);
-        //}
+        if(conSocket != nullptr) {
+            if (workingThreads < MAX_SERVER_THREAD_COUNT)
+            {
+                threads[workingThreads++] = p_uthread_create(ServerConnectionManager::ConnectionThread, conSocket, FALSE,
+                                                             nullptr);
+            }
+        }
     }
+    std::cout << "Listener shut down" << std::endl;
     return nullptr;
 }
 ppointer ServerConnectionManager::ConnectionThread(ppointer arg) {
     auto handler = ServerConnectionHandler(static_cast<PSocket *> (arg));
     handler.handleConnection();
+    return nullptr;
 }

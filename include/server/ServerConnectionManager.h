@@ -4,6 +4,8 @@
 
 #ifndef QUEUEHOSPITAL_SERVERCONNECTIONMANAGER_H
 #define QUEUEHOSPITAL_SERVERCONNECTIONMANAGER_H
+
+#include <atomic>
 #include "plibsys.h"
 #include "PatientRepository.h"
 
@@ -13,9 +15,11 @@ private:
     PSocket *_socket;
     PSocketAddress *address;
 
-    PUThread *threads[MAX_SERVER_THREAD_COUNT];
+
+
 
 public:
+    static std::atomic<bool> serverStop;
     virtual ~ServerConnectionManager();
     void Listen();
     ServerConnectionManager();

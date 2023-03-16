@@ -11,7 +11,7 @@
 #include "queue.h"
 class PatientRepository {
 private:
-    queue<Patient *> _patients;
+    patientQueue _patients;
 public:
     std::optional<Patient> getPatient() noexcept;
     bool addPatient(Patient *patient);

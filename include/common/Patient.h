@@ -12,9 +12,9 @@ class Patient {
 public:
     enum class State : uint16_t {
         UNDEFINED = 0,
-        PATIENT_NORMAL,
-        PATIENT_WARNING,
-        PATIENT_CRITICAL
+        PATIENT_NORMAL = 1,
+        PATIENT_WARNING = 2,
+        PATIENT_CRITICAL = 3
     };
 protected:
     string _fullName;
