@@ -9,7 +9,10 @@ std::optional<Patient> PatientRepository::getPatient() noexcept {
     {
         return {};
     }
-    return *_patients.Pop();
+    auto patientPtr = _patients.Pop();
+    auto patient = *patientPtr;
+    delete patientPtr;
+    return patient;
 }
 
 bool PatientRepository::addPatient(Patient *patient) {
@@ -21,7 +24,6 @@ bool PatientRepository::addPatient(Patient *patient) {
 
 PatientRepository::PatientRepository() {
     _patients = queue<Patient *>();
-    _patients.Push(new Patient("Random Person Name", Patient::State::PATIENT_CRITICAL));
 }
 
 PatientRepository *PatientRepository::getSharedObject() {
