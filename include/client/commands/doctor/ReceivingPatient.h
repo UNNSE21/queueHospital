@@ -13,7 +13,7 @@
 
 class ReceivingPatient {
 public:
-    optional<Patient> get(PSocket *socket);
+    void TryGet(PSocket *socket);
 };
 
 

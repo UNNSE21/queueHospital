@@ -1,4 +1,4 @@
-#include "../../include/client/queueHospitalClient.h"
+#include "../../include/client/QueueHospitalClient.h"
 #include "../../include/client/ClientConnectionHandler.h"
 
 pchar buffer[MESSAGE_MAX_SIZE];
