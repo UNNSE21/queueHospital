@@ -8,10 +8,11 @@
 
 #include <optional>
 #include "../common/common.h"
-#include "queue.h"
+#include "PatientQueue.h"
+
 class PatientRepository {
 private:
-    patientQueue _patients;
+    PatientQueue _patients;
 public:
     std::optional<Patient> getPatient() noexcept;
     bool addPatient(Patient *patient);

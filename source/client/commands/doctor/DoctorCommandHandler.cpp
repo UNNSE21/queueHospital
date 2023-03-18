@@ -5,6 +5,7 @@
 #include <cstring>
 #include "../../../../include/client/commands/doctor/DoctorCommandHandler.h"
 #include "../../../../include/client/commands/doctor/ReceivingPatient.h"
+#include "../../../../include/client/commands/common/Stopping.h"
 
 void DoctorCommandHandler::ProcessCommands(PSocket* socket) {
     std::cout << "auth as doctor successful" << std::endl;
@@ -13,18 +14,11 @@ void DoctorCommandHandler::ProcessCommands(PSocket* socket) {
     while(strcmp(buf, "stop") != 0) {
         std::cin >> strs;
         if (strs == "get") {
-            auto patient = ReceivingPatient().get(socket);
-            if (patient.has_value()) {
-                std::cout << "Name: " << patient.value().getFullName() << "\nState: "
-                          << static_cast <int> (patient.value().getState()) << std::endl;
-            } else {
-                std::cout << "No patients\n";
-            }
+            ReceivingPatient().TryGet(socket);
         }
         else if(strs == "s")
         {
-            p_socket_send(socket, "stop", 5, nullptr);
-            p_socket_receive(socket, buf, 5, nullptr);
+            Stopping().Stop(socket, buf);
         }
     }
 }
